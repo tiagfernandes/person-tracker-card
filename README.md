@@ -22,10 +22,6 @@ Card avanzata per Home Assistant che mostra informazioni dettagliate sulle perso
 
 ## 📸 Screenshot
 
-### Stati Diversi
-| A Casa | In Ufficio | In Viaggio |
-|--------|-----------|-----------|
-| ![Home](images/state-home.png) | ![Office](images/state-office.png) | ![Travel](images/state-travel.png) |
 
 ### Editor Visuale
 | Tab Base | Tab Sensori | Tab Stati |
