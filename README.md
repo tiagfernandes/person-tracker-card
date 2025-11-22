@@ -385,20 +385,13 @@ aspect_ratio: '1/0.5'
 
 ## 📝 Changelog
 
-### v2.1 (2024-11-22)
-- ✨ Aggiunto supporto completo per immagini PNG/GIF trasparenti
-- 🎨 Migliorato rendering immagini personalizzate per stato
-- 🔧 Fix editor visuale per tutte le opzioni
-- 📱 Aggiunto supporto per più posizioni elementi
-- 🎯 Migliorata gestione aspect ratio
-- 🐛 Fix vari bug di rendering
-
-### v2.0 (2024-11-20)
+### v1.0 (2024-11-22)
 - 🎉 Prima release pubblica
 - ✨ Editor visuale completo
 - 📱 Supporto tutti i sensori Companion App
 - 🎨 Stati personalizzabili con colori
 - 📍 Integrazione Waze per distanze
+
 
 ## 🤝 Contribuire
 
