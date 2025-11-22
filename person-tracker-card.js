@@ -441,12 +441,13 @@ class PersonTrackerCard extends LitElement {
 
       .entity-picture {
         display: flex;
-        justify-content: center; /* centra orizzontalmente */
-        align-items: center;     /* centra verticalmente */
-        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 16px auto; /* Aggiunge 16px sotto l'immagine */
         max-width: 100%;
         max-height: 100%;
       }
+
 
       .entity-picture img {
         display: block;

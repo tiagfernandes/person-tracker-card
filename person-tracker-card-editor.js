@@ -410,125 +410,141 @@ class PersonTrackerCardEditor extends LitElement {
 
 
   _renderSensoriTab() {
-    const entityBase = this._config.entity ? this._config.entity.replace('person.', '') : 'example';
+  const entityBase = this._config.entity
+    ? this._config.entity.replace('person.', '')
+    : 'example';
 
-    return html`
-      <div class="section">
-        <div class="section-title">Sensori Automatici</div>
-        <p class="info-text">
-          I sensori vengono rilevati automaticamente in base all'entità persona selezionata.
-          Pattern standard: sensor.phone_${entityBase}_*
-        </p>
+  return html`
+    <div class="section">
+      <div class="section-title">Sensori Automatici</div>
+      <p class="info-text">
+        I sensori vengono rilevati automaticamente in base all'entità persona selezionata.
+        Pattern standard: sensor.phone_${entityBase}_*
+      </p>
 
-        <!-- Batteria -->
-        <div class="sensor-group">
-          <div class="sensor-header">
-            <ha-icon icon="mdi:battery" class="sensor-icon"></ha-icon>
-            <span class="sensor-title">Batteria</span>
-            <ha-switch
-              .checked=${this._config.show_battery !== false}
-              @change=${(e) => this._valueChanged(e, 'show_battery')}>
-            </ha-switch>
-          </div>
-
-          ${this._config.show_battery !== false ? html`
-            <ha-entity-picker
-              .hass=${this.hass}
-              .value=${this._config.battery_sensor || `sensor.phone_${entityBase}_battery_level`}
-              .label=${'Sensore batteria'}
-              .includeDomains=${['sensor']}
-              @value-changed=${(e) => this._valueChanged(e, 'battery_sensor')}>
-            </ha-entity-picker>
-          ` : ''}
+      <!-- Batteria -->
+      <div class="sensor-group">
+        <div class="sensor-header">
+          <ha-icon icon="mdi:battery" class="sensor-icon"></ha-icon>
+          <span class="sensor-title">Batteria</span>
+          <ha-switch
+            .checked=${this._config.show_battery !== false}
+            @change=${(e) => this._valueChanged(e, 'show_battery')}>
+          </ha-switch>
         </div>
 
+        ${this._config.show_battery !== false ? html`
+          <ha-entity-picker
+            .hass=${this.hass}
+            .value=${this._config.battery_sensor || `sensor.phone_${entityBase}_battery_level`}
+            .label=${'Sensore batteria'}
+            .includeDomains=${['sensor']}
+            @value-changed=${(e) => this._valueChanged(e, 'battery_sensor')}>
+          </ha-entity-picker>
 
-        <!-- Attività -->
-        <div class="sensor-group">
-          <div class="sensor-header">
-            <ha-icon icon="mdi:walk" class="sensor-icon"></ha-icon>
-            <span class="sensor-title">Attività</span>
-            <ha-switch
-              .checked=${this._config.show_activity !== false}
-              @change=${(e) => this._valueChanged(e, 'show_activity')}>
-            </ha-switch>
-          </div>
-          ${this._config.show_activity !== false ? html`
-            <ha-entity-picker
-              .hass=${this.hass}
-              .value=${this._config.activity_sensor || `sensor.phone_${entityBase}_activity`}
-              .label=${'Sensore attività'}
-              .includeDomains=${['sensor']}
-              @value-changed=${(e) => this._valueChanged(e, 'activity_sensor')}>
-            </ha-entity-picker>
-          ` : ''}
-        </div>
-
-        <!-- Connessione -->
-        <div class="sensor-group">
-          <div class="sensor-header">
-            <ha-icon icon="mdi:wifi" class="sensor-icon"></ha-icon>
-            <span class="sensor-title">Connessione</span>
-            <ha-switch
-              .checked=${this._config.show_connection !== false}
-              @change=${(e) => this._valueChanged(e, 'show_connection')}>
-            </ha-switch>
-          </div>
-          ${this._config.show_connection !== false ? html`
-            <ha-entity-picker
-              .hass=${this.hass}
-              .value=${this._config.connection_sensor || `sensor.phone_${entityBase}_connection_type`}
-              .label=${'Sensore connessione'}
-              .includeDomains=${['sensor']}
-              @value-changed=${(e) => this._valueChanged(e, 'connection_sensor')}>
-            </ha-entity-picker>
-          ` : ''}
-        </div>
-
-        <!-- Distanza -->
-        <div class="sensor-group">
-          <div class="sensor-header">
-            <ha-icon icon="mdi:home-map-marker" class="sensor-icon"></ha-icon>
-            <span class="sensor-title">Distanza da Casa</span>
-            <ha-switch
-              .checked=${this._config.show_distance !== false}
-              @change=${(e) => this._valueChanged(e, 'show_distance')}>
-            </ha-switch>
-          </div>
-          ${this._config.show_distance !== false ? html`
-            <ha-entity-picker
-              .hass=${this.hass}
-              .value=${this._config.distance_sensor || `sensor.waze_${entityBase}`}
-              .label=${'Sensore distanza'}
-              .includeDomains=${['sensor']}
-              @value-changed=${(e) => this._valueChanged(e, 'distance_sensor')}>
-            </ha-entity-picker>
-          ` : ''}
-        </div>
-
-        <!-- Tempo viaggio -->
-        <div class="sensor-group">
-          <div class="sensor-header">
-            <ha-icon icon="mdi:car-clock" class="sensor-icon"></ha-icon>
-            <span class="sensor-title">Tempo di Viaggio</span>
-            <ha-switch
-              .checked=${this._config.show_travel_time !== false}
-              @change=${(e) => this._valueChanged(e, 'show_travel_time')}>
-            </ha-switch>
-          </div>
-          ${this._config.show_travel_time !== false ? html`
-            <ha-entity-picker
-              .hass=${this.hass}
-              .value=${this._config.travel_sensor || `sensor.casa_lavoro_${entityBase}`}
-              .label=${'Sensore tempo viaggio'}
-              .includeDomains=${['sensor']}
-              @value-changed=${(e) => this._valueChanged(e, 'travel_sensor')}>
-            </ha-entity-picker>
-          ` : ''}
-        </div>
+          ${this._renderPositionButtons('battery_position', 'Posizione batteria')}
+        ` : ''}
       </div>
-    `;
-  }
+
+      <!-- Attività -->
+      <div class="sensor-group">
+        <div class="sensor-header">
+          <ha-icon icon="mdi:walk" class="sensor-icon"></ha-icon>
+          <span class="sensor-title">Attività</span>
+          <ha-switch
+            .checked=${this._config.show_activity !== false}
+            @change=${(e) => this._valueChanged(e, 'show_activity')}>
+          </ha-switch>
+        </div>
+
+        ${this._config.show_activity !== false ? html`
+          <ha-entity-picker
+            .hass=${this.hass}
+            .value=${this._config.activity_sensor || `sensor.phone_${entityBase}_activity`}
+            .label=${'Sensore attività'}
+            .includeDomains=${['sensor']}
+            @value-changed=${(e) => this._valueChanged(e, 'activity_sensor')}>
+          </ha-entity-picker>
+
+          ${this._renderPositionButtons('activity_position', 'Posizione attività')}
+        ` : ''}
+      </div>
+
+      <!-- Connessione -->
+      <div class="sensor-group">
+        <div class="sensor-header">
+          <ha-icon icon="mdi:wifi" class="sensor-icon"></ha-icon>
+          <span class="sensor-title">Connessione</span>
+          <ha-switch
+            .checked=${this._config.show_connection !== false}
+            @change=${(e) => this._valueChanged(e, 'show_connection')}>
+          </ha-switch>
+        </div>
+
+        ${this._config.show_connection !== false ? html`
+          <ha-entity-picker
+            .hass=${this.hass}
+            .value=${this._config.connection_sensor || `sensor.phone_${entityBase}_connection_type`}
+            .label=${'Sensore connessione'}
+            .includeDomains=${['sensor']}
+            @value-changed=${(e) => this._valueChanged(e, 'connection_sensor')}>
+          </ha-entity-picker>
+
+          ${this._renderPositionButtons('connection_position', 'Posizione connessione')}
+        ` : ''}
+      </div>
+
+      <!-- Distanza -->
+      <div class="sensor-group">
+        <div class="sensor-header">
+          <ha-icon icon="mdi:home-map-marker" class="sensor-icon"></ha-icon>
+          <span class="sensor-title">Distanza da Casa</span>
+          <ha-switch
+            .checked=${this._config.show_distance !== false}
+            @change=${(e) => this._valueChanged(e, 'show_distance')}>
+          </ha-switch>
+        </div>
+
+        ${this._config.show_distance !== false ? html`
+          <ha-entity-picker
+            .hass=${this.hass}
+            .value=${this._config.distance_sensor || `sensor.waze_${entityBase}`}
+            .label=${'Sensore distanza'}
+            .includeDomains=${['sensor']}
+            @value-changed=${(e) => this._valueChanged(e, 'distance_sensor')}>
+          </ha-entity-picker>
+
+          ${this._renderPositionButtons('distance_position', 'Posizione distanza')}
+        ` : ''}
+      </div>
+
+      <!-- Tempo viaggio -->
+      <div class="sensor-group">
+        <div class="sensor-header">
+          <ha-icon icon="mdi:car-clock" class="sensor-icon"></ha-icon>
+          <span class="sensor-title">Tempo di Viaggio</span>
+          <ha-switch
+            .checked=${this._config.show_travel_time !== false}
+            @change=${(e) => this._valueChanged(e, 'show_travel_time')}>
+          </ha-switch>
+        </div>
+
+        ${this._config.show_travel_time !== false ? html`
+          <ha-entity-picker
+            .hass=${this.hass}
+            .value=${this._config.travel_sensor || `sensor.casa_lavoro_${entityBase}`}
+            .label=${'Sensore tempo viaggio'}
+            .includeDomains=${['sensor']}
+            @value-changed=${(e) => this._valueChanged(e, 'travel_sensor')}>
+          </ha-entity-picker>
+
+          ${this._renderPositionButtons('travel_position', 'Posizione tempo viaggio')}
+        ` : ''}
+      </div>
+    </div>
+  `;
+}
+
 
 
   _renderStatiTab() {
