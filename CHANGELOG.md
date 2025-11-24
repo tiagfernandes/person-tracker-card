@@ -1,9 +1,39 @@
 # Changelog
-
 All notable changes to this project will be documented in this file.
-
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.0] - 2024-11-24
+
+### Added - Multilanguage Support 🌍
+- 🌍 **Complete Multilanguage System** - Full internationalization support
+- 🇮🇹 **Italian** - Complete translation (Italiano)
+- 🇬🇧 **English** - Complete translation (default fallback)
+- 🇫🇷 **French** - Complete translation (Français)
+- 🇩🇪 **German** - Complete translation (Deutsch)
+- 🔄 **Automatic Language Detection** - Reads from Home Assistant settings
+- 🎯 **Smart Fallback System** - English as default for unsupported languages
+- 📝 **Translated Elements**:
+  - Person states (Home, Away, Not Home, Unknown)
+  - Editor interface (all tabs and labels)
+  - Sensor names and descriptions
+  - Position labels
+  - Custom state defaults
+  - Time relative strings (hours ago, minutes ago, etc.)
+  - All buttons and actions
+
+### Changed
+- 🔤 **Default Language** - Changed from hardcoded to English fallback
+- 🎨 **Editor Organization** - All UI elements now multilingual
+- 📱 **User Experience** - Seamless language switching based on HA settings
+
+### Technical Improvements
+- ⚡ **Embedded Translations** - Zero latency with embedded translation dictionaries
+- 🏗️ **LocalizationHelper Class** - Centralized translation management
+- 🔧 **Type-safe Code** - Removed TypeScript annotations for JavaScript compatibility
+- 📦 **No External Dependencies** - All translations included in JS files
+
+---
 
 ## [1.1.0] - 2024-11-23
 
@@ -26,6 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🐛 Fixed person name disappearing with custom states in compact mode
 - 🐛 Fixed irrelevant style fields showing in compact mode
 - 🔧 Improved event handling for ha-select components
+
+---
 
 ## [1.0.0] - 2024-11-22
 
@@ -65,16 +97,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## Layout Modes
+## Features Summary
 
-### Classic Layout (v1.0.0)
+### Multilanguage Support (v2.0.0) 🌍
+- 4 complete language translations
+- Automatic detection from Home Assistant
+- English fallback for unsupported languages
+- All UI elements translated
+- Zero performance impact
+
+### Layout Modes
+
+#### Classic Layout (v1.0.0)
 - Fully customizable element positioning
 - Configurable aspect ratio
 - Adjustable image size
 - 8 position options for each element
 - Perfect for large dashboard cards
 
-### Compact Layout (v1.1.0)
+#### Compact Layout (v1.1.0)
 - Space-efficient horizontal grid
 - Fixed 40x40px image
 - Bottom icon bar with all indicators
@@ -83,8 +124,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## Change Types
+## Supported Languages
 
+| Language | Code | Status | Version |
+|----------|------|--------|---------|
+| 🇬🇧 English | en | ✅ Complete | 2.0.0 |
+| 🇮🇹 Italiano | it | ✅ Complete | 2.0.0 |
+| 🇫🇷 Français | fr | ✅ Complete | 2.0.0 |
+| 🇩🇪 Deutsch | de | ✅ Complete | 2.0.0 |
+
+---
+
+## Change Types
 - `Added` for new features
 - `Changed` for changes in existing functionality
 - `Deprecated` for soon-to-be removed features
@@ -95,6 +146,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ## Version Links
-
+- [2.0.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v2.0.0
 - [1.1.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.1.0
 - [1.0.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.0.0
