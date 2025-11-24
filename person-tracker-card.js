@@ -690,8 +690,9 @@ class PersonTrackerCard extends LitElement {
     else if (this._activity === 'Automotive') activityColor = 'blue';
     
     // Connection
-    const connectionIcon = this._connectionType === 'Wi-Fi' ? 'mdi:wifi' : 'mdi:signal';
-    const connectionColor = this._connectionType === 'Wi-Fi' ? 'blue' : 'orange';
+    const type = this._connectionType.toLowerCase().replace(/[^a-z]/g, '');
+    const connectionIcon = type === 'wifi' ? 'mdi:wifi' : 'mdi:signal';
+    const connectionColor = type === 'wifi' ? 'blue' : 'orange';
     
     // Battery color
     const batteryColor = this._getBatteryColor();
