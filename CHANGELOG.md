@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2025-01-25
+
+### Added
+- 📏 **Dynamic Distance Unit** - Distance sensor now reads unit of measurement from entity attributes
+- 🎯 **Dynamic Activity Icon** - Activity icon follows entity's `icon` attribute with fallback to predefined mapping
+- 🔤 **State Font Customization** - Added option to customize state text font size (Classic layout)
+- 🕐 **Last Changed Font Customization** - Added option to customize last changed text font size (Classic layout)
+
+### Fixed
+- 🤖 **Android WiFi Detection** - Fixed connection type detection for Android devices
+  - iOS uses `Wi-Fi` while Android Companion App uses `wifi`
+  - Added case-insensitive check that handles all variations (`wifi`, `Wi-Fi`, `WIFI`, `wi-fi`, etc.)
+  - New helper method `_isWifiConnection()` normalizes connection type before comparison
+- 👤 **Person Name Display** - Fixed person name visualization in Classic layout
+
+### Technical Improvements
+- ⚡ **Normalized WiFi Check** - Removes spaces, hyphens, and underscores before lowercase comparison
+- 🔧 **Cross-Platform Compatibility** - Now works identically on iOS and Android devices
+
+---
+
 ## [1.1.1] - 2024-11-24
 
 ### Added - Multilanguage Support 🌍
@@ -146,6 +167,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ## Version Links
-- [2.0.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.1.1
+- [1.1.2]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.1.2
+- [1.1.1]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.1.1
 - [1.1.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.1.0
 - [1.0.0]: https://github.com/djdevil/person-tracker-card/releases/tag/v1.0.0
