@@ -1,14 +1,14 @@
-// Person Tracker Card v1.2.0 - Multilanguage Version
+// Person Tracker Card v1.2.4 - Multilanguage Version
 // Full support for all editor options
 // Languages: Italian (default), English, French, German
-// v1.2.3 Fix Language fr,ge. Hide Activity Status when unknown
+// v1.2.4 Fix Language fr,ge. Hide Activity Status when unknown
 // v1.2.2: Bug fix, battery state, animation,fixed light theme
 // v1.2.0: Added Modern layout with circular progress indicators for battery and travel time
 // v1.1.2: Added dynamic unit of measurement for distance sensor
 // v1.1.2: Activity icon now follows entity's icon attribute with fallback to predefined mapping
 // v1.1.2: Fixed WiFi detection for Android (case-insensitive check for "wifi", "Wi-Fi", etc.)
 
-console.log("Person Tracker Card v1.2.0 Multilanguage loading...");
+console.log("Person Tracker Card v1.2.4 Multilanguage loading...");
 
 const LitElement = Object.getPrototypeOf(
   customElements.get("ha-panel-lovelace") || customElements.get("hui-view")
